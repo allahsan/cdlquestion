@@ -311,7 +311,6 @@ function resetQuiz() {
 }
 
 function showResults() {
-    console.log('Updated showResults function called!'); // Debug log
     if (!currentQuiz || !isChecked || !window.currentQuizData) return;
     
     const quiz = window.currentQuizData[currentQuiz];
@@ -336,28 +335,125 @@ function showResults() {
     
     const percentage = Math.round((correctAnswers / totalQuestions) * 100);
     
-    let resultMessage = `Quiz Results for ${quiz.title}\n\n`;
-    resultMessage += `Score: ${correctAnswers}/${totalQuestions} (${percentage}%)\n\n`;
+    // Performance indicator
+    let performanceColor = '#e74c3c';
+    let performanceIcon = '📚';
+    let performanceText = 'Keep studying! Focus on the areas where you missed questions.';
     
     if (percentage >= 80) {
-        resultMessage += "🎉 Excellent work! You're well-prepared for this topic.\n\n";
+        performanceColor = '#27ae60';
+        performanceIcon = '🎉';
+        performanceText = "Excellent work! You're well-prepared for this topic.";
     } else if (percentage >= 70) {
-        resultMessage += "👍 Good job! Review the incorrect answers to improve further.\n\n";
-    } else {
-        resultMessage += "📚 Keep studying! Focus on the areas where you missed questions.\n\n";
+        performanceColor = '#f39c12';
+        performanceIcon = '👍';
+        performanceText = 'Good job! Review the incorrect answers to improve further.';
     }
+
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    `;
     
-    resultMessage += "Detailed Results:\n";
+    // Create modal content
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: white;
+        border-radius: 15px;
+        padding: 50px;
+        max-width: 95vw;
+        width: 1200px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+        margin: 20px;
+    `;
+    
+    // Build content
+    let modalContent = `
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: #2c3e50; margin-bottom: 20px; font-size: 3em;">Quiz Results</h2>
+            <h3 style="color: #7f8c8d; margin-bottom: 30px; font-weight: normal; font-size: 1.5em;">${quiz.title}</h3>
+            <div style="background: ${performanceColor}; color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                <div style="font-size: 5em; margin-bottom: 20px;">${performanceIcon}</div>
+                <div style="font-size: 3em; font-weight: bold; margin-bottom: 20px;">${correctAnswers}/${totalQuestions} (${percentage}%)</div>
+                <div style="font-size: 1.4em; line-height: 1.5;">${performanceText}</div>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+            <h3 style="color: #2c3e50; margin-bottom: 25px; font-size: 1.8em;">📊 Detailed Results</h3>`;
+    
     resultDetails.forEach((result, index) => {
         const status = result.isCorrect ? "✅" : "❌";
-        resultMessage += `\n${index + 1}. ${status} ${result.question.substring(0, 60)}...\n`;
+        const bgColor = result.isCorrect ? '#d5f4e6' : '#fadbd8';
+        const borderColor = result.isCorrect ? '#27ae60' : '#e74c3c';
+        
+        modalContent += `
+            <div style="background: ${bgColor}; border-left: 6px solid ${borderColor}; padding: 25px; margin-bottom: 20px; border-radius: 12px;">
+                <div style="font-weight: bold; margin-bottom: 15px; color: #2c3e50; font-size: 1.3em;">
+                    ${status} Question ${index + 1}
+                </div>
+                <div style="margin-bottom: 18px; color: #2c3e50; line-height: 1.6; font-size: 1.1em;">
+                    ${result.question}
+                </div>`;
+        
         if (!result.isCorrect) {
-            resultMessage += `   Your answer: ${result.userAnswer}\n`;
-            resultMessage += `   Correct answer: ${result.correctAnswer}\n`;
+            modalContent += `
+                <div style="margin-top: 18px; padding-top: 18px; border-top: 2px solid #ddd;">
+                    <div style="margin-bottom: 10px; color: #e74c3c; font-size: 1.1em;">
+                        <strong>Your answer:</strong> ${result.userAnswer || 'Not answered'}
+                    </div>
+                    <div style="color: #27ae60; font-size: 1.1em;">
+                        <strong>Correct answer:</strong> ${result.correctAnswer}
+                    </div>
+                </div>`;
+        }
+        
+        modalContent += `</div>`;
+    });
+    
+    modalContent += `
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <button onclick="this.closest('.modal-overlay').remove()" style="
+                background: linear-gradient(135deg, #3498db, #2980b9);
+                color: white;
+                border: none;
+                padding: 18px 45px;
+                border-radius: 30px;
+                font-size: 1.3em;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                Close Results
+            </button>
+        </div>`;
+    
+    modal.innerHTML = modalContent;
+    modalOverlay.appendChild(modal);
+    modalOverlay.className = 'modal-overlay';
+    
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.remove();
         }
     });
     
-    alert(resultMessage);
+    document.body.appendChild(modalOverlay);
 }
 
 // Utility Functions
