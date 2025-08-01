@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CDL Training Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .quiz-selector {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-selector h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .quiz-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(116, 185, 255, 0.4);
+        }
+
+        .quiz-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .quiz-content.active {
+            display: block;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .question-container:hover {
+            border-color: #74b9ff;
+            box-shadow: 0 5px 15px rgba(116, 185, 255, 0.2);
+        }
+
+        .question {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .option:hover {
+            border-color: #74b9ff;
+            background: #f0f8ff;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .option.selected {
+            border-color: #74b9ff;
+            background: #e3f2fd;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
+        }
+
+        .btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.4);
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #fdcb6e, #e17055);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            box-shadow: 0 5px 15px rgba(162, 155, 254, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .quiz-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚛 CDL Training Quiz Practice</h1>
+            <p>Master your Commercial Driver's License knowledge with interactive practice sessions</p>
+        </div>
+
+        <div class="quiz-selector" id="quizSelector">
+            <h2>Select a Quiz Module</h2>
+            <div class="quiz-grid">
+                <button class="quiz-option" onclick="loadQuiz('trucking')">
+                    CDLC2: Welcome to Trucking Industry
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('controls')">
+                    CDLC3: Control Systems/Dashboard
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('inspection')">
+                    CDLC4: Pre/Post-Trip Inspections
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('basic')">
+                    CDLC5: Basic Control
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('shifting')">
+                    CDLC6: Shifting/Operating Transmissions
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('backing')">
+                    CDLC7: Backing and Docking
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('coupling')">
+                    CDLC8: Coupling and Uncoupling
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('visual')">
+                    CDLC9: Visual Search
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('communication')">
+                    CDLC10: Communication
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('distracted')">
+                    CDLC11: Distracted Driving
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('speed')">
+                    CDLC12: Speed Management
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('space')">
+                    CDLC13: Space Management
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('night')">
+                    CDLC14: Night Operation
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('extreme')">
+                    CDLC15: Extreme Driving Conditions
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('railroad')">
+                    CDLC18: Railroad-Highway Grade Crossings
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('planning')">
+                    CDLC29: Trip Planning
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('drugs')">
+                    CDLC30: Drugs/Alcohol
+                </button>
+                <button class="quiz-option" onclick="loadQuiz('logging')">
+                    CDLC28: Logging Test
+                </button>
+            </div>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+            <button class="btn back-btn" onclick="showQuizSelector()">← Back to Quiz Selection</button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="score-display" id="scoreDisplay">Score: 0/0 (0%)</div>
+            <div id="questionsContainer"></div>
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuiz = null;
+        let userAnswers = {};
+        let isChecked = false;
+
+        const quizData = {
+            trucking: {
+                title: "CDLC2: Welcome to the Trucking Industry",
+                questions: [
+                    {
+                        question: "The trucking industry is subject to regulations from which of the following agencies?",
+                        options: [
+                            "U.S. Department of Interior (DOI)",
+                            "Bureau of Safety and Environmental Enforcement (BSEE)",
+                            "Federal Motor Carrier Safety Administration (FMCSA)",
+                            "Bureau of Transportation Statistics (BTS)"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The Federal Motor Carrier Safety Regulations (FMCSRs) establish basic safety rules and standards for:",
+                        options: [
+                            "drivers and other employees of motor carriers.",
+                            "motor carriers.",
+                            "commercial motor vehicles (CMVs).",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "In order to obtain your commercial driver's license (CDL), you must first:",
+                        options: [
+                            "Obtain a commercial learner's permit (CLP).",
+                            "have all restrictions removed from your personal driver's license.",
+                            "be at least 15-years old.",
+                            "both A and C."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following requires an endorsement on your CDL?",
+                        options: [
+                            "Air brakes",
+                            "Double/triple trailers",
+                            "Manual transmission",
+                            "All of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "According to the FMCSRs, you are qualified to operate a CMV if you:",
+                        options: [
+                            "are at least 15-years old.",
+                            "have passed an IQ test.",
+                            "Have only one current CDL.",
+                            "are currently disqualified from operating a motor vehicle."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following is considered a major disqualifying offense?",
+                        options: [
+                            "Following the vehicle ahead too closely",
+                            "Leaving the scene of an accident",
+                            "Texting while driving a CMV",
+                            "Violating an out-of-service order"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Prohibited alcohol use includes which of the following?",
+                        options: [
+                            "Use during the eight hours following an accident, or until you undergo a post-accident test",
+                            "Reporting for duty with an alcohol concentration of 0.01 or greater",
+                            "Use during the eight hours before performing safety-sensitive functions",
+                            "Use while cleaning your windows and mirrors"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following will result in you being removed from all safety-sensitive functions until you go through a return-to-duty process?",
+                        options: [
+                            "Failing an alcohol test",
+                            "Testing positive for drugs",
+                            "Refusing to take a required alcohol and/or drug test",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What part of a combination vehicle is referred to as the \"power unit?\"",
+                        options: [
+                            "Tractor",
+                            "Drive axle",
+                            "Duals",
+                            "Either A or B"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "The federal size and weight limits apply to a national system of interstates commonly referred to as the:",
+                        options: [
+                            "Federal Network",
+                            "Limit Highway",
+                            "Weight Road",
+                            "National Network"
+                        ],
+                        correct: 3
+                    }
+                ]
+            },
+            
+            controls: {
+                title: "CDLC3: Control Systems/Dashboard",
+                questions: [
+                    {
+                        question: "A commercial motor vehicle's (CMV's) engine controls are used to:",
+                        options: [
+                            "safely operate your vehicle.",
+                            "start up and shut down the vehicle's engine.",
+                            "warn you when pressures or temperatures reach a dangerous level.",
+                            "help you steer, accelerate, brake, and park your CMV."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "If your truck has a starter button, you must first turn the engine key to the 'on' position before engaging it.",
+                        options: [
+                            "starter button",
+                            "engine brake",
+                            "clutch button",
+                            "cruise control"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which clutch position is required to start the engine or shift gears?",
+                        options: [
+                            "Engaged",
+                            "Free play",
+                            "Disengaged",
+                            "Clutch brake"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following is a yellow, diamond-shaped knob that allows you to activate the parking brake?",
+                        options: [
+                            "Parking brake control valve",
+                            "Trailer air supply valve",
+                            "Foot brake control valve",
+                            "Trailer brake hand-control valve"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Secondary vehicle controls:",
+                        options: [
+                            "provide backup functionality to the primary controls.",
+                            "shut down the vehicle's engine in an emergency.",
+                            "assist you in safely operating your vehicle.",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If your CMV has a seat belt, the Federal Motor Carrier Safety Regulations (FMCSR) say you must use it.",
+                        options: [
+                            "seat heater",
+                            "cruise control",
+                            "seat belt",
+                            "fog lamps"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which vehicle instrument measures the voltage in a vehicle's electrical system?",
+                        options: [
+                            "Voltmeter",
+                            "Exhaust pyrometer",
+                            "Ammeter",
+                            "Both A and C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What is a normal operating range for a CMV's oil pressure gauge?",
+                        options: [
+                            "20-45 psi",
+                            "30-50 psi",
+                            "40-65 psi",
+                            "50-70 psi"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following warning devices help you to know when exhaust temperatures are abnormal?",
+                        options: [
+                            "Pyrometer warning light",
+                            "Coolant temperature warning light",
+                            "Differential warning light",
+                            "Both A and B"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following warning devices indicates there is inadequate pressure in the air brake system?",
+                        options: [
+                            "Coolant level alarm",
+                            "Oil level alarm",
+                            "Low pressure warning alarm/light",
+                            "Oil pressure warning light"
+                        ],
+                        correct: 2
+                    }
+                ]
+            },
+
+            inspection: {
+                title: "CDLC4: Pre- and Post-Trip Inspections",
+                questions: [
+                    {
+                        question: "In order to put a commercial motor vehicle on the road, you must first:",
+                        options: [
+                            "complete and sign a DVIR.",
+                            "ask a mechanic about the vehicle's condition.",
+                            "conduct a thorough pre-trip inspection.",
+                            "perform a short test drive to verify safe operation."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Before you inspect the engine compartment and front axle components:",
+                        options: [
+                            "verify the parking brakes have been set.",
+                            "put the vehicle's keys in the ignition, depress the clutch, and start the engine.",
+                            "remove the chocks from the wheels.",
+                            "close the hood."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the minimum tread depth for the steer-tire?",
+                        options: [
+                            "2/32 inch",
+                            "4/32 inch",
+                            "6/32 inch",
+                            "8/32 inch"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When inspecting the brake assembly, you should ensure:",
+                        options: [
+                            "the slack adjusters are snug and tight.",
+                            "the brake shoes have at least a quarter-inch lining.",
+                            "air brake lines have no more than four cracks.",
+                            "all of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "After the initial 50-mile check, how often must you conduct additional on-the-road inspections of the cargo securement and securement devices?",
+                        options: [
+                            "whenever a change of duty status is made, every three hours, or 150 miles, whichever comes first",
+                            "Whenever you stop for fuel or every 150 miles, whichever comes first",
+                            "If you are stopped for a roadside inspection and fail",
+                            "Both A and C"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the only circumstance you are not required to inspect your cargo and load securing devices?",
+                        options: [
+                            "If your load is sealed and you have been ordered not to open it",
+                            "If your vehicle is loaded in a way that makes cargo inspection impossible",
+                            "If your destination is less than 100-air miles from your home terminal",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When is it appropriate to conduct a post-trip inspection?",
+                        options: [
+                            "Whenever it's most convenient, but before the start of your next day",
+                            "The same exact time every evening, regardless of where you are",
+                            "At the end of every work day",
+                            "Right before 12 midnight, when your next day begins on your driver's daily log"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What items should a post-trip inspection include?",
+                        options: [
+                            "Brakes, steering, and lighting",
+                            "Oil and tire pressure",
+                            "The same items as the pre-trip inspection except for things affected by heat",
+                            "Only items known to be defective"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "When do the regulations require drivers of property-carrying CMVs to complete and sign a DVIR?",
+                        options: [
+                            "At the start of their work day for each vehicle they intend to operate during that shift",
+                            "Whenever a defect or deficiency is discovered or reported",
+                            "When a change of duty status is made, every three hours, or every 150 miles, whichever comes first",
+                            "At the end of their work day for any vehicle or equipment they used during that shift"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If the previous driver found defects and noted them on a DVIR, what must you do before operating that vehicle again?",
+                        options: [
+                            "Make sure that any items listed defective/deficient that may affect the safe operation of the vehicle were repaired.",
+                            "The original copy of the DVIR must be received at the carrier's home terminal.",
+                            "A Master Diesel Technician must personally certify the vehicle is safe for operation.",
+                            "All of the above."
+                        ],
+                        correct: 0
+                    }
+                ]
+            },
+
+            // Add more quiz modules here...
+            basic: {
+                title: "CDLC5: Basic Control",
+                questions: [
+                    {
+                        question: "What is the very first step you should take when starting a tractor-trailer engine?",
+                        options: [
+                            "Depress the clutch",
+                            "Apply the parking brake",
+                            "Turn the ignition switch/key on",
+                            "Apply the service brakes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the appropriate cool down period for a tractor-trailer engine?",
+                        options: [
+                            "A cool down period is not necessary",
+                            "Between 30-60 minutes",
+                            "It depends on the weather (temperature and humidity)",
+                            "It varies based on engine type, nature of the trip, and cargo hauled"
+                        ],
+                        correct: 3
+                    }
+                ]
+            },
+
+            logging: {
+                title: "CDLC28: Logging Test",
+                questions: [
+                    {
+                        question: "Can a driver do non-driving work (line #4) beyond the 60/70 hour limit?",
+                        options: [
+                            "Yes, but the hours must be added to the 60/70 hour limit",
+                            "No, it would be a log book violation"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "How many hours may a driver have on duty driving (line #3) and on duty not driving (line #4) in eight consecutive days?",
+                        options: [
+                            "70",
+                            "60",
+                            "80", 
+                            "24"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which line or lines on the log sheet are to be counted when adding up your maximum allowable hours in eight (8) consecutive days worked?",
+                        options: [
+                            "Line #3",
+                            "Lines 3 and 4",
+                            "Lines 1 and 3",
+                            "Lines 1, 3, and 4"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "If a driver has accumulated 59 total hours worked in seven (7) days, how many hours are available on the eighth (8th) day?",
+                        options: [
+                            "6 hours",
+                            "1 hour",
+                            "11 hours",
+                            "15 hours"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How many driving hours are available if ten (10) straight hours have been taken off duty, then the driver begins driving for four (4) hours, takes a 30 minute break, drives another four (4) hours, and had a breakdown for three (3) hours?",
+                        options: [
+                            "11 hours",
+                            "4.5 hours",
+                            "2.5 hours",
+                            "No hours left"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The Short-haul exemption maximum allowable workday is:",
+                        options: [
+                            "14 hours",
+                            "8 hours",
+                            "10 hours",
+                            "12 hours"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Driver's log books must be kept up to the last:",
+                        options: [
+                            "Day of operation",
+                            "Off duty status",
+                            "Change of Duty Status",
+                            "Sleeper Berth Time"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Your home terminal is Winter Haven, Fl. Your run takes you to California. What time zone would you record in your logbook?",
+                        options: [
+                            "Central",
+                            "Pacific",
+                            "Eastern",
+                            "All time zones traveled"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "A driver drives seven (7) hours, goes in the sleeper berth for nine (9) hours, then drives for five (5) hours, which (if any) logging rule did he violate?",
+                        options: [
+                            "None",
+                            "14 hour rule",
+                            "11 hour rule",
+                            "70 hours/Eight (8) day rule"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "All logging entries can be made by:",
+                        options: [
+                            "Co-driver",
+                            "Driver Only",
+                            "Someone else designated by the Driver",
+                            "DOT Officer"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When a driver has adverse driving conditions, drivers are allowed to extend the 10 hour maximum driving time and 15 hour on-duty limit by:",
+                        options: [
+                            "Up to 4 hours",
+                            "Up to 2 hours",
+                            "No more than 1 hour",
+                            "Up to 3 hours"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The fourteen (14) hour rule means:",
+                        options: [
+                            "A driver can drive for fourteen (14) hours after having ten (10) hours off duty or ten (10) hours sleeper berth time.",
+                            "Cannot drive and do on duty not driving work (lines 3 & 4) only fourteen (14) hours in a twenty-four (24) hour period.",
+                            "Must not drive after fourteen (14) hours on duty (total of lines 1, 3, and 4) without ten (10) hours of off duty (lines 1 or 2).",
+                            "None of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How often must the original log sheets be forwarded to the home terminal, at least every:",
+                        options: [
+                            "30 days",
+                            "13 days",
+                            "7 days",
+                            "No set time"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the number of hours a driver may on duty in a twenty-four (24) hour period, (lines 3 & 4)?",
+                        options: [
+                            "14",
+                            "Any amount up to 24",
+                            "10",
+                            "11"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "To meet the ten (10) hour rest requirement, a driver using a sleeper berth tractor may split the ten (10) hour requirement:",
+                        options: [
+                            "Yes",
+                            "No"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "After a week's vacation, you report to your terminal at 1 pm, at what time should you restart your log sheet?",
+                        options: [
+                            "1 pm",
+                            "12:01 am",
+                            "12:01 pm",
+                            "8:00 am"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How long should duplicate log sheets be kept in your vehicle?",
+                        options: [
+                            "13 days",
+                            "30 days",
+                            "7 days",
+                            "No set time"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How many hours may a driver drive in a twenty-four (24) hour period?",
+                        options: [
+                            "11 hours",
+                            "13.25 hours",
+                            "14 hours",
+                            "16 hours"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Sleeper Berth and off-duty (lines 1 and 2) may be used to accumulate rest by splitting the lines up if you do it correctly according to DOT regulations?",
+                        options: [
+                            "True",
+                            "False"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Your day starts at 1 am. You perform your pre-trip and begin driving and stop to sleep after eleven (11) hours at 12 pm. When must you perform your next pre-trip inspection?",
+                        options: [
+                            "12 pm",
+                            "Anytime before 12:00 midnight the same day",
+                            "As soon as required on the following day",
+                            "None of the above"
+                        ],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        function showQuizSelector() {
+            document.getElementById('quizSelector').style.display = 'block';
+            document.getElementById('quizContent').classList.remove('active');
+            currentQuiz = null;
+            userAnswers = {};
+            isChecked = false;
+        }
+
+        function loadQuiz(quizKey) {
+            currentQuiz = quizKey;
+            const quiz = quizData[quizKey];
+            
+            if (!quiz) {
+                alert('This quiz module is coming soon!');
+                return;
+            }
+
+            document.getElementById('quizSelector').style.display = 'none';
+            document.getElementById('quizContent').classList.add('active');
+            
+            displayQuestions(quiz);
+            updateProgress();
+            updateScore();
+            
+            // Reset controls
+            document.getElementById('checkAnswers').style.display = 'inline-block';
+            document.getElementById('resetQuiz').disabled = true;
+            document.getElementById('showResults').style.display = 'none';
+            isChecked = false;
+        }
+
+        function displayQuestions(quiz) {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            quiz.questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.innerHTML = `
+                    <div class="question">${index + 1}. ${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                <input type="radio" name="q${index}" value="${optIndex}">
+                                <span>${String.fromCharCode(97 + optIndex)}. ${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            if (isChecked) return;
+            
+            userAnswers[questionIndex] = optionIndex;
+            
+            // Update visual selection
+            const questionContainer = document.querySelectorAll('.question-container')[questionIndex];
+            const options = questionContainer.querySelectorAll('.option');
+            
+            options.forEach((option, index) => {
+                option.classList.remove('selected');
+                if (index === optionIndex) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            updateProgress();
+            updateScore();
+        }
+
+        function updateProgress() {
+            if (!currentQuiz) return;
+            
+            const totalQuestions = quizData[currentQuiz].questions.length;
+            const answeredQuestions = Object.keys(userAnswers).length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function updateScore() {
+            if (!currentQuiz) return;
+            
+            const totalQuestions = quizData[currentQuiz].questions.length;
+            const answeredQuestions = Object.keys(userAnswers).length;
+            
+            let correctAnswers = 0;
+            if (isChecked) {
+                Object.keys(userAnswers).forEach(questionIndex => {
+                    const userAnswer = userAnswers[questionIndex];
+                    const correctAnswer = quizData[currentQuiz].questions[questionIndex].correct;
+                    if (userAnswer === correctAnswer) {
+                        correctAnswers++;
+                    }
+                });
+            }
+            
+            const percentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+            const scoreText = isChecked 
+                ? `Score: ${correctAnswers}/${totalQuestions} (${percentage}%)`
+                : `Progress: ${answeredQuestions}/${totalQuestions} questions answered`;
+            
+            document.getElementById('scoreDisplay').textContent = scoreText;
+            
+            // Update score display color based on performance
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            if (isChecked) {
+                if (percentage >= 80) {
+                    scoreDisplay.style.background = 'linear-gradient(135deg, #00b894, #00a085)';
+                } else if (percentage >= 70) {
+                    scoreDisplay.style.background = 'linear-gradient(135deg, #fdcb6e, #e17055)';
+                } else {
+                    scoreDisplay.style.background = 'linear-gradient(135deg, #fd79a8, #e84393)';
+                }
+            } else {
+                scoreDisplay.style.background = 'linear-gradient(135deg, #fdcb6e, #e17055)';
+            }
+        }
+
+        function checkAnswers() {
+            if (!currentQuiz) return;
+            
+            const totalQuestions = quizData[currentQuiz].questions.length;
+            const answeredQuestions = Object.keys(userAnswers).length;
+            
+            if (answeredQuestions < totalQuestions) {
+                alert(`Please answer all questions before checking. You have answered ${answeredQuestions} out of ${totalQuestions} questions.`);
+                return;
+            }
+            
+            isChecked = true;
+            
+            // Show correct/incorrect answers
+            quizData[currentQuiz].questions.forEach((q, questionIndex) => {
+                const questionContainer = document.querySelectorAll('.question-container')[questionIndex];
+                const options = questionContainer.querySelectorAll('.option');
+                const userAnswer = userAnswers[questionIndex];
+                const correctAnswer = q.correct;
+                
+                options.forEach((option, optionIndex) => {
+                    option.style.pointerEvents = 'none';
+                    
+                    if (optionIndex === correctAnswer) {
+                        option.classList.add('correct');
+                    } else if (optionIndex === userAnswer && userAnswer !== correctAnswer) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            });
+            
+            updateScore();
+            
+            // Update controls
+            document.getElementById('checkAnswers').style.display = 'none';
+            document.getElementById('resetQuiz').disabled = false;
+            document.getElementById('showResults').style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            if (!currentQuiz) return;
+            
+            userAnswers = {};
+            isChecked = false;
+            
+            // Reset all visual indicators
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('correct', 'incorrect', 'selected');
+                option.style.pointerEvents = 'auto';
+                const radio = option.querySelector('input[type="radio"]');
+                if (radio) radio.checked = false;
+            });
+            
+            updateProgress();
+            updateScore();
+            
+            // Reset controls
+            document.getElementById('checkAnswers').style.display = 'inline-block';
+            document.getElementById('resetQuiz').disabled = true;
+            document.getElementById('showResults').style.display = 'none';
+        }
+
+        function showResults() {
+            if (!currentQuiz || !isChecked) return;
+            
+            const quiz = quizData[currentQuiz];
+            const totalQuestions = quiz.questions.length;
+            let correctAnswers = 0;
+            let resultDetails = [];
+            
+            quiz.questions.forEach((q, index) => {
+                const userAnswer = userAnswers[index];
+                const correctAnswer = q.correct;
+                const isCorrect = userAnswer === correctAnswer;
+                
+                if (isCorrect) correctAnswers++;
+                
+                resultDetails.push({
+                    question: q.question,
+                    userAnswer: q.options[userAnswer],
+                    correctAnswer: q.options[correctAnswer],
+                    isCorrect: isCorrect
+                });
+            });
+            
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 1000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            `;
+            
+            // Create modal content
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                background: white;
+                border-radius: 15px;
+                padding: 30px;
+                max-width: 800px;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                position: relative;
+                width: 100%;
+            `;
+            
+            // Create close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: background 0.3s ease;
+            `;
+            closeBtn.onmouseover = () => closeBtn.style.background = '#f0f0f0';
+            closeBtn.onmouseout = () => closeBtn.style.background = 'none';
+            
+            // Performance indicator color
+            let performanceColor = '#e74c3c';
+            let performanceIcon = '📚';
+            let performanceText = 'Keep studying! Focus on the areas where you missed questions.';
+            
+            if (percentage >= 80) {
+                performanceColor = '#27ae60';
+                performanceIcon = '🎉';
+                performanceText = "Excellent work! You're well-prepared for this topic.";
+            } else if (percentage >= 70) {
+                performanceColor = '#f39c12';
+                performanceIcon = '👍';
+                performanceText = 'Good job! Review the incorrect answers to improve further.';
+            }
+            
+            // Build modal content
+            let modalContent = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="color: #2c3e50; margin-bottom: 10px; font-size: 2em;">Quiz Results</h2>
+                    <h3 style="color: #7f8c8d; margin-bottom: 20px; font-weight: normal;">${quiz.title}</h3>
+                    <div style="background: ${performanceColor}; color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <div style="font-size: 3em; margin-bottom: 10px;">${performanceIcon}</div>
+                        <div style="font-size: 2em; font-weight: bold; margin-bottom: 10px;">${correctAnswers}/${totalQuestions} (${percentage}%)</div>
+                        <div style="font-size: 1.1em;">${performanceText}</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px; font-size: 1.3em;">📊 Detailed Results</h3>
+            `;
+            
+            resultDetails.forEach((result, index) => {
+                const status = result.isCorrect ? "✅" : "❌";
+                const bgColor = result.isCorrect ? '#d5f4e6' : '#fadbd8';
+                const borderColor = result.isCorrect ? '#27ae60' : '#e74c3c';
+                
+                modalContent += `
+                    <div style="background: ${bgColor}; border-left: 4px solid ${borderColor}; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+                        <div style="font-weight: bold; margin-bottom: 8px; color: #2c3e50;">
+                            ${status} Question ${index + 1}
+                        </div>
+                        <div style="margin-bottom: 10px; color: #2c3e50; line-height: 1.4;">
+                            ${result.question}
+                        </div>
+                `;
+                
+                if (!result.isCorrect) {
+                    modalContent += `
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd;">
+                            <div style="margin-bottom: 5px; color: #e74c3c;">
+                                <strong>Your answer:</strong> ${result.userAnswer || 'Not answered'}
+                            </div>
+                            <div style="color: #27ae60;">
+                                <strong>Correct answer:</strong> ${result.correctAnswer}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                modalContent += `</div>`;
+            });
+            
+            modalContent += `
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="this.closest('.modal-overlay').remove()" style="
+                        background: linear-gradient(135deg, #3498db, #2980b9);
+                        color: white;
+                        border: none;
+                        padding: 12px 30px;
+                        border-radius: 25px;
+                        font-size: 1.1em;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Close Results
+                    </button>
+                </div>
+            `;
+            
+            modal.innerHTML = modalContent;
+            modal.appendChild(closeBtn);
+            modalOverlay.appendChild(modal);
+            modalOverlay.className = 'modal-overlay';
+            
+            // Close modal when clicking overlay
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.remove();
+                }
+            });
+            
+            // Close modal when clicking close button
+            closeBtn.addEventListener('click', () => {
+                modalOverlay.remove();
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function escapeHandler(e) {
+                if (e.key === 'Escape') {
+                    modalOverlay.remove();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            });
+            
+            document.body.appendChild(modalOverlay);
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            showQuizSelector();
+        });
+    </script>
+</body>
+</html>
