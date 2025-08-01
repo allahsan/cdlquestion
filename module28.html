@@ -3,464 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CDL Training Hub - Interactive Practice Platform</title>
+    <title>CDLC28: Logging Test - CDL Training Quiz</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🚛 CDL Training Hub</h1>
-            <p>Complete Interactive Commercial Driver's License Practice Platform</p>
-            <p>Master all aspects of commercial driving with comprehensive quiz modules</p>
+        <div class="quiz-header">
+            <h1>📝 CDLC28: Logging Test</h1>
+            <p>Master hours of service regulations, logbook requirements, and duty status recording</p>
         </div>
 
-        <div class="modules-section">
-            <h2 class="section-title">CDL Training Modules</h2>
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
             
-            <!-- Basic Operations & Safety -->
-            <div class="category-section">
-                <div class="category-header">🔧 Basic Operations & Safety</div>
-                <div class="modules-grid">
-                    <div class="module-card available" onclick="window.location.href='module2.html'">
-                        <div class="module-header">
-                            <div class="module-number">C2</div>
-                            <div class="module-title">Welcome to Trucking Industry</div>
-                        </div>
-                        <div class="module-description">
-                            Introduction to trucking regulations, FMCSA requirements, CDL basics, and industry fundamentals.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module3.html'">
-                        <div class="module-header">
-                            <div class="module-number">C3</div>
-                            <div class="module-title">Control Systems & Dashboard</div>
-                        </div>
-                        <div class="module-description">
-                            Engine controls, instruments, warning devices, and dashboard operations for commercial vehicles.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module4.html'">
-                        <div class="module-header">
-                            <div class="module-number">C4</div>
-                            <div class="module-title">Pre & Post-Trip Inspections</div>
-                        </div>
-                        <div class="module-description">
-                            Comprehensive vehicle inspection procedures, DVIR requirements, and safety protocols.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module5.html'">
-                        <div class="module-header">
-                            <div class="module-number">C5</div>
-                            <div class="module-title">Basic Control</div>
-                        </div>
-                        <div class="module-description">
-                            Starting procedures, engine operations, basic vehicle control, and fundamental driving techniques.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">2 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module6.html'">
-                        <div class="module-header">
-                            <div class="module-number">C6</div>
-                            <div class="module-title">Shifting & Operating Transmissions</div>
-                        </div>
-                        <div class="module-description">
-                            Manual and automatic transmission operations, shifting techniques, and gear management.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module7.html'">
-                        <div class="module-header">
-                            <div class="module-number">C7</div>
-                            <div class="module-title">Backing and Docking</div>
-                        </div>
-                        <div class="module-description">
-                            Backing techniques, docking procedures, spatial awareness, and maneuvering in tight spaces.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module8.html'">
-                        <div class="module-header">
-                            <div class="module-number">C8</div>
-                            <div class="module-title">Coupling and Uncoupling</div>
-                        </div>
-                        <div class="module-description">
-                            Trailer coupling procedures, fifth wheel operations, and safe connection/disconnection practices.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-
-            <!-- Driving Operations -->
-            <div class="category-section">
-                <div class="category-header">🚗 Driving Operations</div>
-                <div class="modules-grid">
-                    <div class="module-card available" onclick="window.location.href='module9.html'">
-                        <div class="module-header">
-                            <div class="module-number">C9</div>
-                            <div class="module-title">Visual Search</div>
-                        </div>
-                        <div class="module-description">
-                            Scanning techniques, mirror usage, blind spot awareness, and visual search patterns.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module10.html'">
-                        <div class="module-header">
-                            <div class="module-number">C10</div>
-                            <div class="module-title">Communication</div>
-                        </div>
-                        <div class="module-description">
-                            Turn signals, horn usage, light communication, and effective driver communication methods.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module11.html'">
-                        <div class="module-header">
-                            <div class="module-number">C11</div>
-                            <div class="module-title">Distracted Driving</div>
-                        </div>
-                        <div class="module-description">
-                            Avoiding distractions, maintaining focus, recognizing distracted drivers, and safe practices.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module12.html'">
-                        <div class="module-header">
-                            <div class="module-number">C12</div>
-                            <div class="module-title">Speed Management</div>
-                        </div>
-                        <div class="module-description">
-                            Speed control, stopping distances, reaction time, and appropriate speed for conditions.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module13.html'">
-                        <div class="module-header">
-                            <div class="module-number">C13</div>
-                            <div class="module-title">Space Management</div>
-                        </div>
-                        <div class="module-description">
-                            Following distance, space cushions, lane positioning, and managing space around your vehicle.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/20 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
             </div>
-
-            <!-- Special Conditions -->
-            <div class="category-section">
-                <div class="category-header">🌙 Special Driving Conditions</div>
-                <div class="modules-grid">
-                    <div class="module-card available" onclick="window.location.href='module14.html'">
-                        <div class="module-header">
-                            <div class="module-number">C14</div>
-                            <div class="module-title">Night Operation</div>
-                        </div>
-                        <div class="module-description">
-                            Night driving techniques, headlight usage, vision limitations, and safety considerations.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module15.html'">
-                        <div class="module-header">
-                            <div class="module-number">C15</div>
-                            <div class="module-title">Extreme Driving Conditions</div>
-                        </div>
-                        <div class="module-description">
-                            Weather conditions, emergency procedures, winter driving, and adverse condition management.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C16</div>
-                            <div class="module-title">Fatigue Management</div>
-                        </div>
-                        <div class="module-description">
-                            Fatigue recognition, hours of service, rest requirements, and maintaining alertness.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C17</div>
-                            <div class="module-title">Emergency Maneuvers</div>
-                        </div>
-                        <div class="module-description">
-                            Emergency procedures, accident avoidance, equipment failures, and crisis management.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Specialized Operations -->
-            <div class="category-section">
-                <div class="category-header">🚂 Specialized Operations</div>
-                <div class="modules-grid">
-                    <div class="module-card available" onclick="window.location.href='module18.html'">
-                        <div class="module-header">
-                            <div class="module-number">C18</div>
-                            <div class="module-title">Railroad-Highway Grade Crossings</div>
-                        </div>
-                        <div class="module-description">
-                            Railroad crossing procedures, safety protocols, stopping requirements, and crossing regulations.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C19</div>
-                            <div class="module-title">Vehicle Weight & Balance</div>
-                        </div>
-                        <div class="module-description">
-                            Weight distribution, axle weights, bridge laws, and proper loading techniques.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C20</div>
-                            <div class="module-title">Cargo Handling & Security</div>
-                        </div>
-                        <div class="module-description">
-                            Cargo securement, loading procedures, tie-down requirements, and security protocols.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C21</div>
-                            <div class="module-title">Hazardous Materials Basics</div>
-                        </div>
-                        <div class="module-description">
-                            HAZMAT identification, placarding, basic safety procedures, and transportation requirements.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Professional Operations -->
-            <div class="category-section">
-                <div class="category-header">📋 Professional Operations</div>
-                <div class="modules-grid">
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C22</div>
-                            <div class="module-title">Hours of Service</div>
-                        </div>
-                        <div class="module-description">
-                            HOS regulations, duty time limits, rest requirements, and electronic logging devices.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C23</div>
-                            <div class="module-title">Vehicle Maintenance</div>
-                        </div>
-                        <div class="module-description">
-                            Preventive maintenance, basic repairs, maintenance schedules, and vehicle care.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">8 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C24</div>
-                            <div class="module-title">Environmental Compliance</div>
-                        </div>
-                        <div class="module-description">
-                            Environmental regulations, emissions standards, fuel efficiency, and compliance requirements.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">6 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C25</div>
-                            <div class="module-title">Customer Service</div>
-                        </div>
-                        <div class="module-description">
-                            Professional conduct, customer interactions, delivery procedures, and service excellence.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">6 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C26</div>
-                            <div class="module-title">Technology in Trucking</div>
-                        </div>
-                        <div class="module-description">
-                            GPS systems, ELDs, fleet management technology, and modern trucking tools.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">6 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card coming-soon">
-                        <div class="module-header">
-                            <div class="module-number">C27</div>
-                            <div class="module-title">Security & Crime Prevention</div>
-                        </div>
-                        <div class="module-description">
-                            Cargo security, theft prevention, personal safety, and security awareness protocols.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-coming-soon">Coming Soon</span>
-                            <span class="question-count">6 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module28.html'">
-                        <div class="module-header">
-                            <div class="module-number">C28</div>
-                            <div class="module-title">Logging Test</div>
-                        </div>
-                        <div class="module-description">
-                            Hours of service regulations, logbook requirements, and duty status recording procedures.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">20 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module29.html'">
-                        <div class="module-header">
-                            <div class="module-number">C29</div>
-                            <div class="module-title">Trip Planning</div>
-                        </div>
-                        <div class="module-description">
-                            Route planning, fuel management, permit requirements, and efficient trip organization.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-
-                    <div class="module-card available" onclick="window.location.href='module30.html'">
-                        <div class="module-header">
-                            <div class="module-number">C30</div>
-                            <div class="module-title">Drugs & Alcohol</div>
-                        </div>
-                        <div class="module-description">
-                            Substance abuse policies, testing procedures, safety-sensitive functions, and regulations.
-                        </div>
-                        <div class="module-status">
-                            <span class="status-badge status-available">Available</span>
-                            <span class="question-count">10 Questions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p><strong>CDL Training Hub</strong> - Your complete preparation platform for Commercial Driver's License success</p>
-            <p>Practice modules based on official FMCSA curriculum and real CDL exam content</p>
-            <p>© 2025 CDL Training Platform. All rights reserved.</p>
         </div>
     </div>
 
     <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC28': {
+                title: "CDLC28: Logging Test",
+                questions: [
+                    {
+                        question: "Can a driver do non-driving work (line #4) beyond the 60/70 hour limit?",
+                        options: [
+                            "Yes, but the hours must be added to the 60/70 hour limit",
+                            "No, it would be a log book violation"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "How many hours may a driver have on duty driving (line #3) and on duty not driving (line #4) in eight consecutive days?",
+                        options: [
+                            "70",
+                            "60",
+                            "80", 
+                            "24"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which line or lines on the log sheet are to be counted when adding up your maximum allowable hours in eight (8) consecutive days worked?",
+                        options: [
+                            "Line #3",
+                            "Lines 3 and 4",
+                            "Lines 1 and 3",
+                            "Lines 1, 3, and 4"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "If a driver has accumulated 59 total hours worked in seven (7) days, how many hours are available on the eighth (8th) day?",
+                        options: [
+                            "6 hours",
+                            "1 hour",
+                            "11 hours",
+                            "15 hours"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How many driving hours are available if ten (10) straight hours have been taken off duty, then the driver begins driving for four (4) hours, takes a 30 minute break, drives another four (4) hours, and had a breakdown for three (3) hours?",
+                        options: [
+                            "11 hours",
+                            "4.5 hours",
+                            "2.5 hours",
+                            "No hours left"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The Short-haul exemption maximum allowable workday is:",
+                        options: [
+                            "14 hours",
+                            "8 hours",
+                            "10 hours",
+                            "12 hours"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Driver's log books must be kept up to the last:",
+                        options: [
+                            "Day of operation",
+                            "Off duty status",
+                            "Change of Duty Status",
+                            "Sleeper Berth Time"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Your home terminal is Winter Haven, Fl. Your run takes you to California. What time zone would you record in your logbook?",
+                        options: [
+                            "Central",
+                            "Pacific",
+                            "Eastern",
+                            "All time zones traveled"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "A driver drives seven (7) hours, goes in the sleeper berth for nine (9) hours, then drives for five (5) hours, which (if any) logging rule did he violate?",
+                        options: [
+                            "None",
+                            "14 hour rule",
+                            "11 hour rule",
+                            "70 hours/Eight (8) day rule"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "All logging entries can be made by:",
+                        options: [
+                            "Co-driver",
+                            "Driver Only",
+                            "Someone else designated by the Driver",
+                            "DOT Officer"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When a driver has adverse driving conditions, drivers are allowed to extend the 10 hour maximum driving time and 15 hour on-duty limit by:",
+                        options: [
+                            "Up to 4 hours",
+                            "Up to 2 hours",
+                            "No more than 1 hour",
+                            "Up to 3 hours"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The fourteen (14) hour rule means:",
+                        options: [
+                            "A driver can drive for fourteen (14) hours after having ten (10) hours off duty or ten (10) hours sleeper berth time.",
+                            "Cannot drive and do on duty not driving work (lines 3 & 4) only fourteen (14) hours in a twenty-four (24) hour period.",
+                            "Must not drive after fourteen (14) hours on duty (total of lines 1, 3, and 4) without ten (10) hours of off duty (lines 1 or 2).",
+                            "None of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How often must the original log sheets be forwarded to the home terminal, at least every:",
+                        options: [
+                            "30 days",
+                            "13 days",
+                            "7 days",
+                            "No set time"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the number of hours a driver may on duty in a twenty-four (24) hour period, (lines 3 & 4)?",
+                        options: [
+                            "14",
+                            "Any amount up to 24",
+                            "10",
+                            "11"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "To meet the ten (10) hour rest requirement, a driver using a sleeper berth tractor may split the ten (10) hour requirement:",
+                        options: [
+                            "Yes",
+                            "No"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "After a week's vacation, you report to your terminal at 1 pm, at what time should you restart your log sheet?",
+                        options: [
+                            "1 pm",
+                            "12:01 am",
+                            "12:01 pm",
+                            "8:00 am"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How long should duplicate log sheets be kept in your vehicle?",
+                        options: [
+                            "13 days",
+                            "30 days",
+                            "7 days",
+                            "No set time"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How many hours may a driver drive in a twenty-four (24) hour period?",
+                        options: [
+                            "11 hours",
+                            "13.25 hours",
+                            "14 hours",
+                            "16 hours"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Sleeper Berth and off-duty (lines 1 and 2) may be used to accumulate rest by splitting the lines up if you do it correctly according to DOT regulations?",
+                        options: [
+                            "True",
+                            "False"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Your day starts at 1 am. You perform your pre-trip and begin driving and stop to sleep after eleven (11) hours at 12 pm. When must you perform your next pre-trip inspection?",
+                        options: [
+                            "12 pm",
+                            "Anytime before 12:00 midnight the same day",
+                            "As soon as required on the following day",
+                            "None of the above"
+                        ],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC28', window.currentQuizData);
+        });
+    </script>
 </body>
 </html>
