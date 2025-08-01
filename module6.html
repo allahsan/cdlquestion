@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC6: Shifting & Operating Transmissions - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>⚙️ CDLC6: Shifting & Operating Transmissions</h1>
+            <p>Master manual and automatic transmission operations and shifting techniques</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC6': {
+                title: "CDLC6: Shifting/Operating Transmissions",
+                questions: [
+                    {
+                        question: "In a manual transmission, the shift lever controls what gear the transmission is in.",
+                        options: [
+                            "clutch",
+                            "accelerator",
+                            "shift lever",
+                            "brake pedal"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "When your vehicle reaches the maximum speed for a gear, you must:",
+                        options: [
+                            "upshift.",
+                            "downshift.",
+                            "pump the brakes.",
+                            "push the accelerator."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "When double clutching is done correctly, and the RPMs are matched during the shift:",
+                        options: [
+                            "it gives you time to determine what gear comes next.",
+                            "it enables you to get in a rhythm with the engine.",
+                            "it helps you wait for the 500 RPM change before changing gears.",
+                            "the gears do not grind."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Downshifting early is a common error that may:",
+                        options: [
+                            "make it impossible to get into the next lower gear.",
+                            "cause the clutch to burn out.",
+                            "allow the engine to rev at a low level, possibly causing the vehicle to stall",
+                            "make the clutch to pop out forcefully."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "The purpose of upshifting is to:",
+                        options: [
+                            "Match road speed with engine power.",
+                            "allow the vehicle to increase speed.",
+                            "slow down the vehicle.",
+                            "transfer power from the transmission to the engine."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Proper, smooth shifting is important because if you shift before your vehicle is ready:",
+                        options: [
+                            "your entire tractor-trailer may jerk forward.",
+                            "your drive wheels may lock up momentarily.",
+                            "you could lose control of your vehicle.",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What actions negatively impact your vehicle's fuel economy?",
+                        options: [
+                            "Sitting in too low of a gear (causes the motor to bog down)",
+                            "Using double clutching (causes the RPMs to drop too low)",
+                            "Downshift too early (causes the RPMs to jump up)",
+                            "Using heel-toe acceleration technique (causes the gears to slip)"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "With an auto shift transmission, if the transmission is in the drive position:",
+                        options: [
+                            "you will use a button control to shift through all gears.",
+                            "it will shift gears as needed based on speed and load.",
+                            "only the top gears will automatically change.",
+                            "none of the above."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the primary difference between a manual and semiautomatic transmission?",
+                        options: [
+                            "The top gears automatically change in a manual transmission",
+                            "A semiautomatic transmission does not use a clutch and gearshift lever",
+                            "The top gears automatically change in a semiautomatic transmission",
+                            "A manual transmission uses electronic controls to help you shift"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What does an automatic transmission use to change gears?",
+                        options: [
+                            "Torque converter",
+                            "Range control lever",
+                            "Lever or button",
+                            "Both A and C"
+                        ],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC6', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

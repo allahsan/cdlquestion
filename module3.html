@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC3: Control Systems & Dashboard - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🔧 CDLC3: Control Systems & Dashboard</h1>
+            <p>Master vehicle controls, instruments, and warning devices</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC3': {
+                title: "CDLC3: Control Systems/Dashboard",
+                questions: [
+                    {
+                        question: "A commercial motor vehicle's (CMV's) engine controls are used to:",
+                        options: [
+                            "safely operate your vehicle.",
+                            "start up and shut down the vehicle's engine.",
+                            "warn you when pressures or temperatures reach a dangerous level.",
+                            "help you steer, accelerate, brake, and park your CMV."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "If your truck has a starter button, you must first turn the engine key to the 'on' position before engaging it.",
+                        options: [
+                            "starter button",
+                            "engine brake",
+                            "clutch button",
+                            "cruise control"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which clutch position is required to start the engine or shift gears?",
+                        options: [
+                            "Engaged",
+                            "Free play",
+                            "Disengaged",
+                            "Clutch brake"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following is a yellow, diamond-shaped knob that allows you to activate the parking brake?",
+                        options: [
+                            "Parking brake control valve",
+                            "Trailer air supply valve",
+                            "Foot brake control valve",
+                            "Trailer brake hand-control valve"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Secondary vehicle controls:",
+                        options: [
+                            "provide backup functionality to the primary controls.",
+                            "shut down the vehicle's engine in an emergency.",
+                            "assist you in safely operating your vehicle.",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If your CMV has a seat belt, the Federal Motor Carrier Safety Regulations (FMCSR) say you must use it.",
+                        options: [
+                            "seat heater",
+                            "cruise control",
+                            "seat belt",
+                            "fog lamps"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which vehicle instrument measures the voltage in a vehicle's electrical system?",
+                        options: [
+                            "Voltmeter",
+                            "Exhaust pyrometer",
+                            "Ammeter",
+                            "Both A and C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What is a normal operating range for a CMV's oil pressure gauge?",
+                        options: [
+                            "20-45 psi",
+                            "30-50 psi",
+                            "40-65 psi",
+                            "50-70 psi"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following warning devices help you to know when exhaust temperatures are abnormal?",
+                        options: [
+                            "Pyrometer warning light",
+                            "Coolant temperature warning light",
+                            "Differential warning light",
+                            "Both A and B"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following warning devices indicates there is inadequate pressure in the air brake system?",
+                        options: [
+                            "Coolant level alarm",
+                            "Oil level alarm",
+                            "Low pressure warning alarm/light",
+                            "Oil pressure warning light"
+                        ],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC3', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

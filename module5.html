@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC5: Basic Control - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🎛️ CDLC5: Basic Control</h1>
+            <p>Master fundamental vehicle control and starting procedures</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/2 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC5': {
+                title: "CDLC5: Basic Control",
+                questions: [
+                    {
+                        question: "What is the very first step you should take when starting a tractor-trailer engine?",
+                        options: [
+                            "Depress the clutch",
+                            "Apply the parking brake",
+                            "Turn the ignition switch/key on",
+                            "Apply the service brakes"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the appropriate cool down period for a tractor-trailer engine?",
+                        options: [
+                            "A cool down period is not necessary",
+                            "Between 30-60 minutes",
+                            "It depends on the weather (temperature and humidity)",
+                            "It varies based on engine type, nature of the trip, and cargo hauled"
+                        ],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC5', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

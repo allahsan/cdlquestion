@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC11: Distracted Driving - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🚫 CDLC11: Distracted Driving</h1>
+            <p>Master focus maintenance, distraction avoidance, and safe driving practices</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC11': {
+                title: "CDLC11: Distracted Driving",
+                questions: [
+                    {
+                        question: "Visual distractions are those that lure our eyes away from the road.",
+                        options: [
+                            "a type of distraction that you should focus your attention on while driving.",
+                            "those that occur only immediately on the road in front of you.",
+                            "only a problem for people who are not professional drivers.",
+                            "those that lure our eyes away from the road."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "An example of a physical distraction is eating a cheeseburger and fries while driving down the road.",
+                        options: [
+                            "visual",
+                            "physical",
+                            "mental",
+                            "all of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is it called when you actually don't \"see\" something, even though it's right there in your line of sight. You fail to \"comprehend\" seeing it because your attention isn't focused. Your mind has wandered elsewhere.",
+                        options: [
+                            "Highway hypnosis",
+                            "Physical distraction",
+                            "Inattention blindness",
+                            "Both A and B"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following statements is true about texting while driving?",
+                        options: [
+                            "Texting is almost as dangerous as talking on a cell phone.",
+                            "The effects of texting while driving are the same as being intoxicated.",
+                            "Texting is only allowed by commercial motor vehicle drivers.",
+                            "Texting is allowable if you limit your answers to one word."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "According to the FMCSA, which of the following actions may be permissible when driving a CMV?",
+                        options: [
+                            "Holding a cell phone in one hand",
+                            "Reaching for your phone to check a message",
+                            "Answering a hands-free cell-phone by touching a single button",
+                            "Dialing a phone number while at an intersection"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Keeping both hands on the wheel in the 9-and 3-position will enable you to respond quickly to potential hazards, including distracted drivers.",
+                        options: [
+                            "8-and 4-position",
+                            "9-and 3-position",
+                            "10-and 2-position",
+                            "Either A or B"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "If you can't ignore a distraction, what should you do?",
+                        options: [
+                            "Take care of it at your next planned stop",
+                            "Pull over",
+                            "Take no more than five seconds to handle it (tune radio, answer text, etc.) while driving",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Which of the following are signs another driver is distracted?",
+                        options: [
+                            "His or her vehicle is moving faster or slower than other traffic.",
+                            "The driver is making dramatic changes in speed for no apparent reason.",
+                            "The driver is tailgating other vehicles.",
+                            "All of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What is the best way to deal with a distracted driver?",
+                        options: [
+                            "Create a \"safety cushion\" between you and the distracted driver.",
+                            "Ignore the distracted driver and focus on the road in front of you.",
+                            "Pull in front of the distracted driver.",
+                            "All of the above."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "You can help reduce distracted driving by: committing to not drive while you're distracted, watching out for distracted drivers around you, and responding by managing distracted drivers once you spot them.",
+                        options: [
+                            "responding by managing distracted drivers once you spot them.",
+                            "reporting the actions of distracted drivers in your area to the FMCSA.",
+                            "relaxing when behind the wheel with deep breaths.",
+                            "recording the actions of other distracted drivers on the road."
+                        ],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC11', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

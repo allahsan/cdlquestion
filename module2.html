@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC2: Welcome to Trucking Industry - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🚛 CDLC2: Welcome to Trucking Industry</h1>
+            <p>Master the fundamentals of the trucking industry and federal regulations</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC2': {
+                title: "CDLC2: Welcome to the Trucking Industry",
+                questions: [
+                    {
+                        question: "The trucking industry is subject to regulations from which of the following agencies?",
+                        options: [
+                            "U.S. Department of Interior (DOI)",
+                            "Bureau of Safety and Environmental Enforcement (BSEE)",
+                            "Federal Motor Carrier Safety Administration (FMCSA)",
+                            "Bureau of Transportation Statistics (BTS)"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "The Federal Motor Carrier Safety Regulations (FMCSRs) establish basic safety rules and standards for:",
+                        options: [
+                            "drivers and other employees of motor carriers.",
+                            "motor carriers.",
+                            "commercial motor vehicles (CMVs).",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "In order to obtain your commercial driver's license (CDL), you must first:",
+                        options: [
+                            "Obtain a commercial learner's permit (CLP).",
+                            "have all restrictions removed from your personal driver's license.",
+                            "be at least 15-years old.",
+                            "both A and C."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following requires an endorsement on your CDL?",
+                        options: [
+                            "Air brakes",
+                            "Double/triple trailers",
+                            "Manual transmission",
+                            "All of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "According to the FMCSRs, you are qualified to operate a CMV if you:",
+                        options: [
+                            "are at least 15-years old.",
+                            "have passed an IQ test.",
+                            "Have only one current CDL.",
+                            "are currently disqualified from operating a motor vehicle."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following is considered a major disqualifying offense?",
+                        options: [
+                            "Following the vehicle ahead too closely",
+                            "Leaving the scene of an accident",
+                            "Texting while driving a CMV",
+                            "Violating an out-of-service order"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Prohibited alcohol use includes which of the following?",
+                        options: [
+                            "Use during the eight hours following an accident, or until you undergo a post-accident test",
+                            "Reporting for duty with an alcohol concentration of 0.01 or greater",
+                            "Use during the eight hours before performing safety-sensitive functions",
+                            "Use while cleaning your windows and mirrors"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following will result in you being removed from all safety-sensitive functions until you go through a return-to-duty process?",
+                        options: [
+                            "Failing an alcohol test",
+                            "Testing positive for drugs",
+                            "Refusing to take a required alcohol and/or drug test",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What part of a combination vehicle is referred to as the \"power unit?\"",
+                        options: [
+                            "Tractor",
+                            "Drive axle",
+                            "Duals",
+                            "Either A or B"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "The federal size and weight limits apply to a national system of interstates commonly referred to as the:",
+                        options: [
+                            "Federal Network",
+                            "Limit Highway",
+                            "Weight Road",
+                            "National Network"
+                        ],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC2', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

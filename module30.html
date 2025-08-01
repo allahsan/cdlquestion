@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC30: Drugs & Alcohol - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🚫 CDLC30: Drugs & Alcohol</h1>
+            <p>Master substance abuse policies, testing procedures, and safety-sensitive functions</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC30': {
+                title: "CDLC30: Drugs/Alcohol",
+                questions: [
+                    {
+                        question: "Which activities are considered a safety-sensitive function?",
+                        options: [
+                            "Driving a CMV",
+                            "Loading a CMV",
+                            "Waiting for assistance with a disabled CMV",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "A driver may not use alcohol during the four hours before performing a safety-sensitive function.",
+                        options: [
+                            "four",
+                            "six",
+                            "eight",
+                            "ten"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "All drivers, prior to performing safety-sensitive functions for a motor carrier for the first time, must undergo what type of pre-employment test, and have what type of result?",
+                        options: [
+                            "Alcohol test (failed)",
+                            "Drug test (negative)",
+                            "Psychological test (passed)",
+                            "Both A and B"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Who can order a test based on reasonable suspicion?",
+                        options: [
+                            "Any company employee who observes suspiciously reckless behavior",
+                            "Any substance abuse professional (SAP)",
+                            "Your trained supervisor, based on direct observation",
+                            "Your trained supervisor, based on intuition, hearsay, or a hunch"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Alcohol testing is done in a private setting by a trained and qualified Breath Alcohol Technician (BAT).",
+                        options: [
+                            "Breath Alcohol Technician (BAT)",
+                            "Screening Test Technician (STT)",
+                            "Nurse Practitioner (NP)",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If you initially test positive for drugs, what happens next?",
+                        options: [
+                            "A confirmatory drug test will be conducted",
+                            "You will be screened for alcohol use",
+                            "Your CDL will be revoked for 90 days",
+                            "All of the above"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which actions are considered a refusal to test?",
+                        options: [
+                            "Failing to appear for any test within a reasonable time",
+                            "Failing to remain at the testing site until the testing is complete",
+                            "Failing to provide a specimen for testing",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If you fail an alcohol test or test positive for drugs, you may not return to a safety-sensitive function until the return-to-duty process, including an evaluation by a Substance Abuse Professional (SAP) has been completed.",
+                        options: [
+                            "Screening Test Technician (STT)",
+                            "Substance Abuse Professional (SAP)",
+                            "Nurse Practitioner (NP)",
+                            "Breath Alcohol Technician (BAT)"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following statements regarding alcohol use is true?",
+                        options: [
+                            "Alcohol can slow reaction time",
+                            "Brain damage can be a long-term effect of alcohol abuse",
+                            "Both A and B",
+                            "Neither A or B"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What has a greater impact on your ability to drive, alcohol or drugs?",
+                        options: [
+                            "Both alcohol and drugs are equally as dangerous when you are under their influence and get behind the wheel.",
+                            "Neither alcohol nor drugs will impact your ability to drive if consumed in moderation.",
+                            "Alcohol. Because use of it is legal, it is easier to obtain in larger quantities.",
+                            "Drugs. Because use of them is illegal, they are harder to obtain."
+                        ],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC30', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC18: Railroad-Highway Grade Crossings - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🚂 CDLC18: Railroad-Highway Grade Crossings</h1>
+            <p>Master railroad crossing procedures, safety protocols, and stopping requirements</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC18': {
+                title: "CDLC18: Railroad-Highway Grade Crossings",
+                questions: [
+                    {
+                        question: "It takes approximately 14 seconds for a 53-foot, 80,000-pound tractor-trailer to cross a single railroad track.",
+                        options: [
+                            "14 seconds",
+                            "12 seconds",
+                            "10 seconds",
+                            "8 seconds"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What should you do if the warning lights at a crossing begin to flash after you have started to cross the tracks?",
+                        options: [
+                            "Stop where you are until the train passes",
+                            "Shift to a higher gear to get over the tracks quicker",
+                            "Maintain your speed and keep moving forward",
+                            "Back up enough to clear the gate arm if it is safe to do so"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "If your vehicle gets stuck on railroad tracks, what should be your very first step?",
+                        options: [
+                            "Put the vehicle in neutral and activate your four-way flashers",
+                            "Get out of the vehicle immediately",
+                            "Call the posted emergency telephone number",
+                            "Wait in your vehicle until help arrives"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Who should you call first if your vehicle stalls out on railroad tracks?",
+                        options: [
+                            "Dispatch",
+                            "Supervisor",
+                            "Emergency number posted or 911",
+                            "Mechanic"
+                        ],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC18', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>
+                        question: "Which of the following vehicles are required to stop at highway-rail grade crossings?",
+                        options: [
+                            "A tanker transporting a Division 2.3 Chlorine",
+                            "A motorcoach carrying 19 passengers",
+                            "A refrigerated trailer full of temperature-sensitive produce",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If you're driving a CMV that is required to stop at railroad crossings, you must stop within 50 feet of, and no closer than 15 feet to the tracks.",
+                        options: [
+                            "within 100 feet of, and no closer than 50 feet to",
+                            "within 75 feet of, and no closer than 25 feet to",
+                            "within 50 feet of, and no closer than 15 feet to",
+                            "within 25 feet of, and no closer than 5 feet to"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of the following are considered highway-rail grade crossing offenses?",
+                        options: [
+                            "Failing to have sufficient space to drive completely through the crossing without stopping",
+                            "Inoperative brake lights",
+                            "Operating a CMV during an out-of-service order",
+                            "All of the above"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If convicted of a highway-rail grade crossing offense while operating a CMV for the third time in less than three years, what is the disqualification period?",
+                        options: [
+                            "60 days",
+                            "90 days",
+                            "180 days",
+                            "1 year"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "A round, yellow sign with a large \"X\" and the letters \"RR\" accompanied by a smaller rectangular sign that reads \"EXEMPT\" means a stop is not required except when a train is approaching the crossing.",
+                        options: [
+                            "all vehicles are exempt from having to stop at these tracks at all times.",
+                            "a stop is not required except when a train is approaching the crossing.",
+                            "this railroad track is abandoned, or its use has been discontinued.",
+                            "both A and B."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can you tell if there are multiple tracks at a single crossing?",
+                        options: [
+                            "A yellow diamond-shaped sign will show an image with the correct number of tracks",
+                            "The number will be painted white in the pavement leading up to the tracks",
+                            "A sign indicating the number of tracks will be on the post below the crossbuck",
+                            "The number is located on each of the red and white striped gate arms"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "It takes approximately 14 seconds for a 53-foot, 80,000-pound tractor-trailer to cross a single railroad track.",
+                        options: [
+                            "14 seconds",
+                            "12 seconds",
+                            "10 seconds",
+                            "8 seconds"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What should you do if the warning lights at a crossing begin to flash after you have started to cross the tracks?",
+                        options: [
+                            "Stop where you are until the train passes",
+                            "Shift to a higher gear to get over the tracks quicker",
+                            "Maintain your speed and keep moving forward",
+                            "Back up enough to clear the gate arm if it is safe to do so"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "If your vehicle gets stuck on railroad tracks, what should be your very first step?",
+                        options: [
+                            "Put the vehicle in neutral and activate your four-way flashers",
+                            "Get out of the vehicle immediately",
+                            "Call the posted emergency telephone number",
+                            "Wait in your vehicle until help arrives"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Who should you call first if your vehicle stalls out on railroad tracks?",
+                        options: [
+                            "Dispatch",
+                            "Supervisor",
+                            "Emergency number posted or 911",
+                            "Mechanic"
+                        ],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC18', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

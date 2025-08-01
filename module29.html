@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC29: Trip Planning - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🗺️ CDLC29: Trip Planning</h1>
+            <p>Master route planning, fuel management, and efficient trip organization</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC29': {
+                title: "CDLC29: Trip Planning",
+                questions: [
+                    {
+                        question: "Which class of commercial driver's license do you need to operate a single vehicle with a GVWR of 26,001 pounds or more, or any such vehicle towing a vehicle not in excess of 10,000 pounds GVWR?",
+                        options: [
+                            "Class A license",
+                            "Class B license",
+                            "Class C license",
+                            "Class D license"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What paperwork should you have with you that indicates title to the goods you are delivering?",
+                        options: [
+                            "Bill of lading",
+                            "Trip report",
+                            "Record of duty status",
+                            "Operator's license"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If you discover a defect or deficiency during your post-trip inspection, you must complete a written report commonly referred to as a driver vehicle inspection report (DVIR).",
+                        options: [
+                            "individual vehicle mileage report (IVMR).",
+                            "special permit.",
+                            "trip report.",
+                            "driver vehicle inspection report (DVIR)."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "You should know what route you plan to take and identify alternate routes before you depart.",
+                        options: [
+                            "map grids",
+                            "alternate routes",
+                            "highway maps",
+                            "both A and B"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "A GPS designed for truck drivers includes information on low overpasses/bridges, route restrictions, and upcoming scales.",
+                        options: [
+                            "weight of your vehicle",
+                            "route restrictions",
+                            "the length and width of your vehicle",
+                            "all of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Per the federal requirements, the maximum gross vehicle weight is 80,000 pounds except where a lower GVW is dictated by the bridge formula.",
+                        options: [
+                            "bridge formula.",
+                            "tandem axle formula.",
+                            "restricted route rule.",
+                            "highway bridge rule."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Estimating your trip time is crucial. It helps you comply with hours-of-service regulations.",
+                        options: [
+                            "avoid overcrowded rest stops.",
+                            "meet delivery schedules.",
+                            "comply with hours-of-service regulations.",
+                            "Both B and C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "A general guideline used by many drivers is to allow two hours for every 100 miles traveled.",
+                        options: [
+                            "75",
+                            "100",
+                            "125",
+                            "150"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can you estimate the range of your vehicle?",
+                        options: [
+                            "Multiply your average speed by the vehicle tank capacity",
+                            "Divide your idle time by the miles per gallon",
+                            "You can find that estimate listed on your bill of lading",
+                            "Multiply the tank capacity by the miles per gallon"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Which of the following could affect your fuel usage estimations?",
+                        options: [
+                            "Driving in the mountains",
+                            "Idling for an extended period of time",
+                            "City driving",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC29', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

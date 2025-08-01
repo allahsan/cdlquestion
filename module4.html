@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC4: Pre & Post-Trip Inspections - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🔍 CDLC4: Pre & Post-Trip Inspections</h1>
+            <p>Master comprehensive vehicle inspection procedures and DVIR requirements</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC4': {
+                title: "CDLC4: Pre- and Post-Trip Inspections",
+                questions: [
+                    {
+                        question: "In order to put a commercial motor vehicle on the road, you must first:",
+                        options: [
+                            "complete and sign a DVIR.",
+                            "ask a mechanic about the vehicle's condition.",
+                            "conduct a thorough pre-trip inspection.",
+                            "perform a short test drive to verify safe operation."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Before you inspect the engine compartment and front axle components:",
+                        options: [
+                            "verify the parking brakes have been set.",
+                            "put the vehicle's keys in the ignition, depress the clutch, and start the engine.",
+                            "remove the chocks from the wheels.",
+                            "close the hood."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the minimum tread depth for the steer-tire?",
+                        options: [
+                            "2/32 inch",
+                            "4/32 inch",
+                            "6/32 inch",
+                            "8/32 inch"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When inspecting the brake assembly, you should ensure:",
+                        options: [
+                            "the slack adjusters are snug and tight.",
+                            "the brake shoes have at least a quarter-inch lining.",
+                            "air brake lines have no more than four cracks.",
+                            "all of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "After the initial 50-mile check, how often must you conduct additional on-the-road inspections of the cargo securement and securement devices?",
+                        options: [
+                            "whenever a change of duty status is made, every three hours, or 150 miles, whichever comes first",
+                            "Whenever you stop for fuel or every 150 miles, whichever comes first",
+                            "If you are stopped for a roadside inspection and fail",
+                            "Both A and C"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the only circumstance you are not required to inspect your cargo and load securing devices?",
+                        options: [
+                            "If your load is sealed and you have been ordered not to open it",
+                            "If your vehicle is loaded in a way that makes cargo inspection impossible",
+                            "If your destination is less than 100-air miles from your home terminal",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When is it appropriate to conduct a post-trip inspection?",
+                        options: [
+                            "Whenever it's most convenient, but before the start of your next day",
+                            "The same exact time every evening, regardless of where you are",
+                            "At the end of every work day",
+                            "Right before 12 midnight, when your next day begins on your driver's daily log"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What items should a post-trip inspection include?",
+                        options: [
+                            "Brakes, steering, and lighting",
+                            "Oil and tire pressure",
+                            "The same items as the pre-trip inspection except for things affected by heat",
+                            "Only items known to be defective"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "When do the regulations require drivers of property-carrying CMVs to complete and sign a DVIR?",
+                        options: [
+                            "At the start of their work day for each vehicle they intend to operate during that shift",
+                            "Whenever a defect or deficiency is discovered or reported",
+                            "When a change of duty status is made, every three hours, or every 150 miles, whichever comes first",
+                            "At the end of their work day for any vehicle or equipment they used during that shift"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If the previous driver found defects and noted them on a DVIR, what must you do before operating that vehicle again?",
+                        options: [
+                            "Make sure that any items listed defective/deficient that may affect the safe operation of the vehicle were repaired.",
+                            "The original copy of the DVIR must be received at the carrier's home terminal.",
+                            "A Master Diesel Technician must personally certify the vehicle is safe for operation.",
+                            "All of the above."
+                        ],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC4', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC15: Extreme Driving Conditions - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>❄️ CDLC15: Extreme Driving Conditions</h1>
+            <p>Master weather conditions, emergency procedures, and adverse condition management</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC15': {
+                title: "CDLC15: Extreme Driving Conditions",
+                questions: [
+                    {
+                        question: "What are some items you should have in your cab for your protection and safety when traveling during the winter months?",
+                        options: [
+                            "Drinking water",
+                            "Extra clothes",
+                            "Blankets",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Why is it important to be sure your fuel tank is topped off when adverse weather conditions are predicted?",
+                        options: [
+                            "It can help keep the appropriate ratio of fuel-to-oil in the fuel tank",
+                            "It can prevent carbon monoxide from leaking into your vehicle through the exhaust system",
+                            "It can help ensure you don't run out of fuel and get stranded in a dangerous situation",
+                            "It can keep the electrical lines from becoming brittle and breaking easily"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Tire chains are most effective on heavy snow.",
+                        options: [
+                            "glare ice.",
+                            "light, dry snow.",
+                            "heavy snow.",
+                            "dry surfaces."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Tire chains placed on the drive tires improve traction for downhill braking.",
+                        options: [
+                            "the trailer wheels",
+                            "the drive tires",
+                            "the steer axle",
+                            "any retreaded tires"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "The three basic causes of skidding and jackknifing are overaccelerating, overbraking, and oversteering.",
+                        options: [
+                            "dry powdery snow, rain, and high winds.",
+                            "underaccelerating, underbraking, and understeering.",
+                            "black ice, fog, and heavy snow.",
+                            "overaccelerating, overbraking, and oversteering."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If your engine doesn't start, stop cranking it after 30 seconds and check for problems with the fuel tank/lines, electrical systems, and battery.",
+                        options: [
+                            "15",
+                            "20",
+                            "30",
+                            "60"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What measures can you take to help prevent heat-related illnesses?",
+                        options: [
+                            "Avoid heavy exertion",
+                            "Drink water frequently",
+                            "Avoid working in the direct sun",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If your vehicle breaks down in cold, windy conditions, what can you do to keep yourself safe?",
+                        options: [
+                            "Stay in the vehicle cab",
+                            "Put on extra clothing to stay warm",
+                            "Walk to the nearest gas station for help",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What primary factor should help you determine what gear to select while traveling up steep grades?",
+                        options: [
+                            "The steepness of the grade",
+                            "The weight of the load on the vehicle",
+                            "The length of the grade",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When traveling on roads with sharp curves, how should you adjust your speed?",
+                        options: [
+                            "Maintain a steady pace at the posted speed limit",
+                            "Increase your speed by 5-10 mph",
+                            "Reduce your speed by at least 5-10 mph",
+                            "Either A or C"
+                        ],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC15', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

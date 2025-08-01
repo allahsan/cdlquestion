@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC10: Communication - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>📡 CDLC10: Communication</h1>
+            <p>Master turn signals, horn usage, and effective driver communication methods</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC10': {
+                title: "CDLC10: Communication",
+                questions: [
+                    {
+                        question: "Using your turn signals is only optional when:",
+                        options: [
+                            "changing lanes when no one else is around.",
+                            "merging into the flow of traffic under 25 mph",
+                            "returning to your lane after passing another vehicle.",
+                            "none of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "On the highway, you should signal about 500 feet before turning.",
+                        options: [
+                            "100",
+                            "250",
+                            "500",
+                            "1,000"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "If traffic ahead begins to slow, what should you do to alert those around you that you're slowing down?",
+                        options: [
+                            "Tap your brakes",
+                            "Flash your headlights",
+                            "Sound your horn",
+                            "Drive onto the shoulder"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What can happen if you attempt to direct traffic by flashing your lights, blowing your horn, or using hand signals?",
+                        options: [
+                            "You create a safer environment around your entire tractor-trailer",
+                            "It could cause an accident resulting in injury, damage, and potential liability",
+                            "You can be found at fault for the mistake of someone else if",
+                            "Both B and C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When approaching a pedestrian or bicyclist, always assume:",
+                        options: [
+                            "You have the right of way.",
+                            "they don't see you and could suddenly move in front of your vehicle.",
+                            "there are more pedestrian/bicyclists with them you cannot see.",
+                            "all of the above."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "From dusk to dawn, be sure your headlights are always turned on.",
+                        options: [
+                            "four-way flashers",
+                            "brake lights",
+                            "turn signals",
+                            "headlights"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Which horn should you use when trying to communicate with others?",
+                        options: [
+                            "Electric horn",
+                            "Air horn",
+                            "Bulb horn",
+                            "Either A or C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When is an appropriate time for you to use your four-way flashers?",
+                        options: [
+                            "When slowing down unexpectedly",
+                            "When coming to a complete stop on a roadway or its shoulder",
+                            "When exiting the highway",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "According to the FMCSRs, if your vehicle is stopped, you have 10 devices.",
+                        options: [
+                            "5",
+                            "10",
+                            "15",
+                            "30"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can making eye contact help you communicate with others around you?",
+                        options: [
+                            "It can enable you to maintain full control over your vehicle",
+                            "can help enforce who has the right of way",
+                            "It can assist in confirming others' awareness of your presence",
+                            "Trying to make eye contact is distracting and never a good idea while driving"
+                        ],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC10', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

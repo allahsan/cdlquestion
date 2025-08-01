@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC7: Backing and Docking - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🔄 CDLC7: Backing and Docking</h1>
+            <p>Master backing techniques, docking procedures, and spatial awareness</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC7': {
+                title: "CDLC7: Backing and Docking",
+                questions: [
+                    {
+                        question: "How does your trailer respond when you turn the wheel to the right while backing?",
+                        options: [
+                            "It drifts to the right",
+                            "It pushes",
+                            "It drifts to the left",
+                            "You should never turn your wheel while backing"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What is a key reason backing is so dangerous?",
+                        options: [
+                            "Sticking your head out the window can lead to chronic neck and back pain.",
+                            "Backing gives you limited visibility; you will always have a blind spot.",
+                            "Backing requires you get out of your tractor; you could be struck by another vehicle.",
+                            "Both B and C"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the acronym commonly used to remember the safety check you should perform before backing?",
+                        options: [
+                            "GOAL: Get Out And Look",
+                            "FIRE: First Inspect Relative Environment",
+                            "LAYER: Look Around Your Entire Rig",
+                            "SAFE: Stay Away from Emergencies"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If you can use a spotter when backing:",
+                        options: [
+                            "responsibility for any incidents that occur transfers to the spotter.",
+                            "he/she should be behind your vehicle at all times.",
+                            "Using a handheld cell phone to communicate with him/her is best.",
+                            "you must agree on all hand signals before beginning the maneuver."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Which of the backing techniques is fundamental in learning all other backing maneuvers?",
+                        options: [
+                            "Sight-side jackknife backing",
+                            "Straight line backing",
+                            "Alley dock backing",
+                            "Parallel parking"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the key characteristic to alley dock backing maneuver?",
+                        options: [
+                            "Backing while turning into a space that is 90 degrees to the truck",
+                            "Backing into a space alongside a dock",
+                            "Backing straight down an alley",
+                            "None of the above"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following statements regarding blind-side jackknife backing are true?",
+                        options: [
+                            "It should never be done without the assistance of a spotter.",
+                            "It is best to stop every few feet to check your clearance.",
+                            "Ending up with a greater than 90-degree angle is preferred",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What backing maneuver should you use if the trailer did not wind up directly in front of the target?",
+                        options: [
+                            "Offset backing",
+                            "Sight side jackknife backing",
+                            "Blind side jackknife backing",
+                            "Alley dock or curved backing"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is something typically unique to loading dock areas you must watch out for when backing?",
+                        options: [
+                            "Storage containers and dumpsters",
+                            "Clearly marked pedestrian paths",
+                            "Clearances around the dock and any nearby barriers",
+                            "None of the above"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "When backing in a parking lot, take note of the:",
+                        options: [
+                            "location of the sun in the sky relative to your mirrors.",
+                            "position of the entrances and exits.",
+                            "amount of fuel in your tank.",
+                            "reading on your tachometer."
+                        ],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC7', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

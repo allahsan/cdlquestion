@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC14: Night Operation - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🌙 CDLC14: Night Operation</h1>
+            <p>Master night driving techniques, headlight usage, and vision limitations</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC14': {
+                title: "CDLC14: Night Operation",
+                questions: [
+                    {
+                        question: "How is your vision different at night?",
+                        options: [
+                            "The sharpness of images in front of you increases",
+                            "Visibility to the left and right sides becomes clearer",
+                            "Your eyes struggle adjusting from light to dark/dark to light",
+                            "All of the above"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What are some ways the exact same road may look completely different from day to night?",
+                        options: [
+                            "Your headlights can't bend around curves",
+                            "Pedestrians and bicyclists are more visible because they typically wear hi-vis clothing",
+                            "Your headlights can illuminate over hills",
+                            "Animals are generally sleeping so you see significantly less of them"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What are some behaviors that may indicate an impaired driver?",
+                        options: [
+                            "A car brakes hard to avoid hitting a deer crossing the road",
+                            "An SUV weaves from lane to lane without using turn signals",
+                            "A truck swerves suddenly to avoid an unmarked pothole",
+                            "All of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How does a dirty windshield affect driving at night?",
+                        options: [
+                            "Lights from oncoming traffic can hit it and create a glare",
+                            "It causes bugs to stick more easily to the windshield and block your view",
+                            "It helps deflect the light of oncoming traffic so it doesn't blind you",
+                            "Both A and B"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Your low beam headlights enable you to see about 250 feet ahead and high beam headlights about 350-500 feet ahead at night.",
+                        options: [
+                            "50, 150-300",
+                            "100, 200-350",
+                            "250, 350-500",
+                            "500, 600-750"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Visibility at night is limited. What action(s) can you take to ensure you are able to see as well as possible?",
+                        options: [
+                            "Dim the brightness of your instrument panel.",
+                            "Check that all lights and reflectors are clean and in good working condition.",
+                            "Keep the dome light off while you are driving.",
+                            "All of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When an oncoming vehicle has their high beam headlights on at night, you should look at the white line on the right side of the road.",
+                        options: [
+                            "turn your high beams on.",
+                            "flash your high beams.",
+                            "look at the white line on the right side of the road.",
+                            "look at the dotted line to the left side of the road."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "To ensure other drivers see you and your truck at night, use your turn signals for every turn or lane change so your intentions are always clear.",
+                        options: [
+                            "keep your high beams on at all times.",
+                            "use your turn signals for every turn or lane change so your intentions are always clear.",
+                            "decrease your following distance so other drivers know you are behind them.",
+                            "turn the dome light on to illuminate your cab."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "At night, how should you adjust your following distance?",
+                        options: [
+                            "Decrease it by at least seven seconds",
+                            "Increase it by at least ten seconds",
+                            "Decrease it by at least two seconds",
+                            "Increase it by at least one second"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "To help avoid fatigue while driving at night, you should stop at regular intervals to rest or stretch.",
+                        options: [
+                            "stop at regular intervals to rest or stretch.",
+                            "play loud, upbeat music.",
+                            "maintain a cab temperature of 72-74 degrees.",
+                            "consume highly-caffeinated drinks."
+                        ],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC14', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

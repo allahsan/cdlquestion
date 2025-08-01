@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC12: Speed Management - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>⚡ CDLC12: Speed Management</h1>
+            <p>Master speed control, stopping distances, and appropriate speed for conditions</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC12': {
+                title: "CDLC12: Speed Management",
+                questions: [
+                    {
+                        question: "Your reaction distance is the distance a vehicle travels from the time you see a hazard until your brain recognizes it.",
+                        options: [
+                            "reaction distance",
+                            "brake lag distance",
+                            "braking distance",
+                            "perception distance"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "A CMV's components (brakes, tires, springs, etc.) are designed to work best when the vehicle is fully loaded.",
+                        options: [
+                            "traveling in adverse weather conditions.",
+                            "the vehicle is completely empty.",
+                            "the vehicle is fully loaded.",
+                            "traveling through curves and on grades."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How does traveling at higher speeds affect your CMV's total stopping distance?",
+                        options: [
+                            "It increases your braking distance",
+                            "It decreases your reaction distance",
+                            "It increases your brake lag distance",
+                            "All of the above"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "You should slow to at least 5 mph below the posted speed limit when entering a curve.",
+                        options: [
+                            "2",
+                            "5",
+                            "8",
+                            "10"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "On a downgrade, your vehicle is working with gravity, resulting in an increase in speed.",
+                        options: [
+                            "against, decrease",
+                            "against, increase",
+                            "with, decrease",
+                            "with, increase"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What danger(s) can foreign objects in the road pose?",
+                        options: [
+                            "They can cause damage to electrical and brake lines",
+                            "They can increase your blind spots",
+                            "They can get caught between dual tires",
+                            "Both A and C"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "What two factors are affected most by extreme weather conditions?",
+                        options: [
+                            "Traction and visibility",
+                            "Visibility and compatibility",
+                            "Traction and position",
+                            "Compatibility and position"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If you are unable to maintain a safe following distance when driving in heavy traffic, it's best to travel 3-4 mph less than the surrounding vehicles.",
+                        options: [
+                            "3-4 mph faster than",
+                            "the exact same speed as",
+                            "3-4 mph less than",
+                            "none of the above"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the result of two or more convictions of excessive speeding (15 mph over the speed limit)?",
+                        options: [
+                            "You will be disqualified from driving for 60-120 days.",
+                            "It will appear in your permanent driving record.",
+                            "You can incur potential fines and higher premiums.",
+                            "All of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "It is acceptable to use your cruise control when conditions are ideal, and only if your carrier allows it.",
+                        options: [
+                            "when conditions are ideal, and only if your carrier allows it.",
+                            "during rush hour, when in heavy traffic, or while on congested highways.",
+                            "when driving at night or in adverse weather conditions.",
+                            "when you are tired or fatigued."
+                        ],
+                        correct: 0
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC12', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>

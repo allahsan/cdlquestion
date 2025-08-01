@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC8: Coupling and Uncoupling - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>🔗 CDLC8: Coupling and Uncoupling</h1>
+            <p>Master trailer coupling procedures and fifth wheel operations</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+            
+            <div id="questionsContainer"></div>
+            
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC8': {
+                title: "CDLC8: Coupling and Uncoupling",
+                questions: [
+                    {
+                        question: "If your fifth wheel isn't greased properly, it can:",
+                        options: [
+                            "crack the apron.",
+                            "create steering problems.",
+                            "snap the kingpin",
+                            "both A and B."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If your service line is loose or damaged, you'll:",
+                        options: [
+                            "suffer a serious leak when you apply the brakes.",
+                            "increase your stopping distance.",
+                            "drain out your air tanks.",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Backing under your trailer at an angle can:",
+                        options: [
+                            "push the trailer sideways",
+                            "keep the air lines from getting pinched.",
+                            "damage/break the landing gear",
+                            "both A and C."
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When performing the tug test, when should you stop?",
+                        options: [
+                            "As soon as you feel resistance from the trailer",
+                            "When you hear a squeak from your trailer tires",
+                            "As soon as the trailer brakes pop out",
+                            "When your spotter gives you the proper hand signal"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the safest way to lower and raise your trailer's landing gear in high gear?",
+                        options: [
+                            "Face the trailer and spin the crank handle around your wrist.",
+                            "Face parallel to the trailer and use two hands.",
+                            "Face the trailer, keep your feet apart, and rest one hand on the trailer.",
+                            "Face parallel to the trailer and rest one hand on the trailer."
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How can you pull the fifth wheel release handle in a way that doesn't put yourself at risk of injury?",
+                        options: [
+                            "Bend at the knees, keep your legs and feet clear of the rear tractor wheels, square yourself up with the handle, and pull straight out.",
+                            "Pull on the handle with your dominant arm using a zig-zag pattern to loosen the grip.",
+                            "Tuck your legs and feet between the rear tractor wheels to get better leverage.",
+                            "Grasp the handle with both hands, brace your foot against the tires, and pull."
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "When positioning the converter dolly for coupling, you should roll the converter dolly up to the front of the rear trailer and stop when:",
+                        options: [
+                            "the fifth wheel is fully under the trailer apron plate.",
+                            "the rear trailer kingpin is about a foot from the jaw opening.",
+                            "you hear the pintle hook snap into place.",
+                            "the fifth wheel makes contact with the front of the trailer apron plate."
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When preparing to couple a rear trailer to a converter dolly, the trailer height should be slightly lower than the fifth wheel.",
+                        options: [
+                            "the same height as",
+                            "slightly lower than",
+                            "slightly higher than",
+                            "perpendicular to"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "How can you ease pressure on the fifth wheel locking jaws before uncoupling your tractor-trailer?",
+                        options: [
+                            "Park on a slight decline when possible",
+                            "Chock the trailer brakes",
+                            "Chock the trailer brakes and back up gently",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "When uncoupling the converter dolly, why should you never unlock the pintle hook with the dolly under the rear trailer?",
+                        options: [
+                            "You can unlock the pintle hook with the dolly under the rear trailer.",
+                            "The dolly tow bar could fly up, possibly causing injury.",
+                            "The trailer could drop.",
+                            "The trailer could start to roll."
+                        ],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC8', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>
