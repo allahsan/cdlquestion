@@ -311,6 +311,7 @@ function resetQuiz() {
 }
 
 function showResults() {
+    console.log('Updated showResults function called!'); // Debug log
     if (!currentQuiz || !isChecked || !window.currentQuizData) return;
     
     const quiz = window.currentQuizData[currentQuiz];
