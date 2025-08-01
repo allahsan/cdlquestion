@@ -15,15 +15,15 @@
 
         <div class="quiz-content active">
             <a href="index.html" class="btn back-btn">← Back to All Modules</a>
-            
+
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            
+
             <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
-            
+
             <div id="questionsContainer"></div>
-            
+
             <div class="controls">
                 <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
                 <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
@@ -34,62 +34,11 @@
 
     <script src="scripts.js"></script>
     <script>
-        // Quiz data specific to this module
         window.currentQuizData = {
             'CDLC18': {
                 title: "CDLC18: Railroad-Highway Grade Crossings",
                 questions: [
                     {
-                        question: "It takes approximately 14 seconds for a 53-foot, 80,000-pound tractor-trailer to cross a single railroad track.",
-                        options: [
-                            "14 seconds",
-                            "12 seconds",
-                            "10 seconds",
-                            "8 seconds"
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "What should you do if the warning lights at a crossing begin to flash after you have started to cross the tracks?",
-                        options: [
-                            "Stop where you are until the train passes",
-                            "Shift to a higher gear to get over the tracks quicker",
-                            "Maintain your speed and keep moving forward",
-                            "Back up enough to clear the gate arm if it is safe to do so"
-                        ],
-                        correct: 2
-                    },
-                    {
-                        question: "If your vehicle gets stuck on railroad tracks, what should be your very first step?",
-                        options: [
-                            "Put the vehicle in neutral and activate your four-way flashers",
-                            "Get out of the vehicle immediately",
-                            "Call the posted emergency telephone number",
-                            "Wait in your vehicle until help arrives"
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Who should you call first if your vehicle stalls out on railroad tracks?",
-                        options: [
-                            "Dispatch",
-                            "Supervisor",
-                            "Emergency number posted or 911",
-                            "Mechanic"
-                        ],
-                        correct: 2
-                    }
-                ]
-            }
-        };
-
-        // Initialize this specific quiz
-        document.addEventListener('DOMContentLoaded', function() {
-            loadQuiz('CDLC18', window.currentQuizData);
-        });
-    </script>
-</body>
-</html>
                         question: "Which of the following vehicles are required to stop at highway-rail grade crossings?",
                         options: [
                             "A tanker transporting a Division 2.3 Chlorine",
@@ -193,7 +142,6 @@
             }
         };
 
-        // Initialize this specific quiz
         document.addEventListener('DOMContentLoaded', function() {
             loadQuiz('CDLC18', window.currentQuizData);
         });

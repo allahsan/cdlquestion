@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDLC9: Visual Search - CDL Training Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1>👀 CDLC9: Visual Search</h1>
+            <p>Sharpen your scanning and hazard detection skills</p>
+        </div>
+
+        <div class="quiz-content active">
+            <a href="index.html" class="btn back-btn">← Back to All Modules</a>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="score-display" id="scoreDisplay">Progress: 0/10 questions answered</div>
+
+            <div id="questionsContainer"></div>
+
+            <div class="controls">
+                <button class="btn" id="checkAnswers" onclick="checkAnswers()">Check Answers</button>
+                <button class="btn btn-secondary" id="resetQuiz" onclick="resetQuiz()" disabled>Reset Quiz</button>
+                <button class="btn" id="showResults" onclick="showResults()" style="display: none;">Show Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quiz data specific to this module
+        window.currentQuizData = {
+            'CDLC9': {
+                title: "CDLC9: Visual Search",
+                questions: [
+                    {
+                        question: "Distance scanning helps you:",
+                        options: [
+                            "avoid abrupt stops",
+                            "identify hazards early",
+                            "avoid radical speed changes",
+                            "all of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "As a general rule, look about ____ ahead of your vehicle.",
+                        options: [
+                            "1-2 seconds",
+                            "6-7 seconds",
+                            "12-15 seconds",
+                            "20 seconds"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "How often should you check your mirrors while driving?",
+                        options: [
+                            "Every 2 seconds",
+                            "Every 4 seconds",
+                            "Every 10 seconds",
+                            "Every 20 seconds"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following are potential hazards you must be aware of while driving?",
+                        options: [
+                            "Stopped vehicles",
+                            "Pedestrians",
+                            "Accidents",
+                            "All of the above"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "Which of the following scenarios could indicate a distracted pedestrian?",
+                        options: [
+                            "Someone looking straight ahead at oncoming traffic",
+                            "Someone looking down while reading a text on a cell phone",
+                            "Someone looking both ways before entering a crosswalk",
+                            "All of the above"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What is a potential sign of a distracted driver?",
+                        options: [
+                            "The car in front of you has its cruise control set and maintains a consistent speed",
+                            "The truck in front of you stays in its lane and maintains a consistent speed",
+                            "The SUV behind you cut off another driver and is now swerving and tailgating you",
+                            "All of the above"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which type of mirror is designed to eliminate as much of your blind spot as possible?",
+                        options: [
+                            "Convex mirrors",
+                            "Plane (west coast) mirrors",
+                            "Fender mirrors",
+                            "Rear view mirrors"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If you need to see down the sides and towards the rear of your trailer, what mirror should you use?",
+                        options: [
+                            "Convex mirrors",
+                            "Plane (west coast) mirrors",
+                            "Fender mirrors",
+                            "Any of the above would work equally well"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "When adjusting your mirrors, what should you see in the inside vertical edge of your plane (west coast) mirrors?",
+                        options: [
+                            "The trailer body",
+                            "Part of the trailer",
+                            "A point on the ground 30 feet away",
+                            "A point on the ground 35 feet away"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "When changing lanes, check your mirrors:",
+                        options: [
+                            "before you change lanes.",
+                            "after you signal and as you begin the lane change.",
+                            "after you complete the lane change.",
+                            "all of the above."
+                        ],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        // Initialize this specific quiz
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz('CDLC9', window.currentQuizData);
+        });
+    </script>
+</body>
+</html>
